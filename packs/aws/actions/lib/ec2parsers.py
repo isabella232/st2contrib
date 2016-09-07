@@ -272,7 +272,7 @@ class ResultSets(object):
                 # resort to the str of the object which should have something meaningful.
                 output[k] = getattr(v, 'id', str(v))
             # Generally unmarshallable object might be hiding in list so better to
-            if isinstance(v, list):
+            elif isinstance(v, list):
                 v_list = []
                 for item in v:
                     # avoid touching the basic types.
@@ -281,4 +281,10 @@ class ResultSets(object):
                     else:
                         v_list.append(str(item))
                 output[k] = v_list
+            elif isinstance(v, dict):
+                v_dict = {}
+                for k1, v1 in v:
+                    v_dict[k1] = self.selector(v1)
+
+                output[k] = v_dict
         return output
