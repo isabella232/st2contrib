@@ -283,7 +283,7 @@ class ResultSets(object):
                 output[k] = v_list
             elif isinstance(v, dict):
                 v_dict = {}
-                for k1, v1 in v:
+                for k1, v1 in v.iteritems():
                     v_dict[k1] = self.selector(v1)
 
                 output[k] = v_dict
