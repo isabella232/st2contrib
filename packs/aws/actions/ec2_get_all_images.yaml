@@ -17,7 +17,7 @@ parameters:
   executable_by:
     type: string
   filters:
-    type: string
+    type: object
   image_ids:
     type: string
   module_path:
