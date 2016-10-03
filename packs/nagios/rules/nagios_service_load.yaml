@@ -2,7 +2,7 @@
 name: check_load
 pack: nagios
 description: Check cpu load on host
-enabled: true
+enabled: false
 trigger:
   type: nagios.service_state_change
 criteria:
@@ -13,7 +13,6 @@ criteria:
     pattern: HARD
     type: matchregex
 action:
-  ref: check_loadavg
+  ref: linux.check_loadavg
   parameters:
     hosts: "{{trigger.host}}"
-    cmd: all
